@@ -1,0 +1,53 @@
+<style media="screen">
+	h1{
+		font-family:'Courier New', Courier, monospace;
+		color: lightseagreen;
+		text-align: center;
+	}
+	h3{
+		font-family:'Courier New', Courier, monospace;
+		color: lightseagreen;
+		text-align: left;
+		margin-left: 4rem;
+	}
+	form{
+		text-align: center;
+	}
+	#text-area{
+		border-radius: 40px;
+		text-align: center;
+	}
+  li {
+		border-radius: 40px;
+		list-style: square;
+    background-color: lightpink;
+    margin-bottom: 10px;
+    padding: 2px;
+    width: 33%;
+    font-family:'Courier New', Courier, monospace;
+  }
+</style>
+
+<h1>Food Saver</h1>
+
+<h3>Save the food you want to eat later! </h3>
+
+<ul>
+  {{#each food}}
+  	<li>
+  	   {{!-- <p>ID: {{this.id}}</p> --}}
+       <p><{{this.id}}> {{this.name}}</p>
+  	</li>
+  {{/each}}
+</ul>
+
+<form action="/" method="POST">
+
+	{{!-- <label for="name">Name:</label> --}}
+  <input type="text" name="name" id="text-area" placeholder = "Enter food here">
+  <input type="submit" value="Submit">
+
+	{{!-- <textarea id="text-area" type="submit" placeholder = "Enter food here" name="name"></textarea> --}}
+
+	{{!-- <button type="submit">Submit</button> --}}
+</form>
