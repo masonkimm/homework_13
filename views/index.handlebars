@@ -1,53 +1,121 @@
-<style media="screen">
-	h1{
+<style>
+  h1{
 		font-family:'Courier New', Courier, monospace;
 		color: lightseagreen;
 		text-align: center;
 	}
-	h3{
+  h3{
 		font-family:'Courier New', Courier, monospace;
 		color: lightseagreen;
-		text-align: left;
-		margin-left: 4rem;
+		text-align: center;
 	}
 	form{
 		text-align: center;
 	}
-	#text-area{
-		border-radius: 40px;
-		text-align: center;
-	}
-  li {
-		border-radius: 40px;
+  #input {
+    background-color: lightblue;
+    border-radius: 25%;
+  }
+  #movebutton{
+    background-color: lightcoral;
+    margin-left: 2rem;
+  }
+   li {
+    text-align: center;
+		border-radius: 25%;
 		list-style: square;
-    background-color: lightpink;
+    
     margin-bottom: 10px;
     padding: 2px;
     width: 33%;
     font-family:'Courier New', Courier, monospace;
   }
 </style>
+<h1>Food App</h1>
+<div class="row">
 
-<h1>Food Saver</h1>
+  <div class="col-6">
+    <ul>
+      {{#each food}}
+      <li>
+        <p>
+          {{!-- {{this.id}}.  --}}
+          {{this.name}}
+          <button id="movebutton" data-nameid="{{this.id}}" class="delname">Eat it!</button>
+        </p>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  
+   <div class="col-6"id="finishedfood" data-nameid="{{this.id}}"  style="display:show">
+    <ul>
+      {{#each finished}}
+      <li>
+        <p>
+           {{this.name}}
+        </p>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 
-<h3>Save the food you want to eat later! </h3>
 
-<ul>
-  {{#each food}}
-  	<li>
-  	   {{!-- <p>ID: {{this.id}}</p> --}}
-       <p><{{this.id}}> {{this.name}}</p>
-  	</li>
-  {{/each}}
-</ul>
+</div>
 
-<form action="/" method="POST">
 
-	{{!-- <label for="name">Name:</label> --}}
-  <input type="text" name="name" id="text-area" placeholder = "Enter food here">
-  <input type="submit" value="Submit">
-
-	{{!-- <textarea id="text-area" type="submit" placeholder = "Enter food here" name="name"></textarea> --}}
-
-	{{!-- <button type="submit">Submit</button> --}}
+{{!-- <h4>Save a food!</h4> --}}
+<form action="/" method="POST" id="" class="button-size">
+  <input id="input" type="input" name="name" placeholder="Enter food here">
+  <button type="submit">Save food!</button>
 </form>
+
+
+<script type="text/javascript">
+
+  $(".delname").on("click", function (event) {
+    // ID from the button.
+    var id = $(this).data("nameid");
+
+    // Send the DELETE request.
+    $.ajax("/api/food/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        console.log("deleted id " +  id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+
+    // Send the GET request.
+    $.ajax("/api/" + id, {
+      method: "GET",
+    }).then(
+      function () {
+        console.log("created new plan");
+        // Reload the page to get the updated list
+        location.reload("/");
+      }
+    );
+  });
+  
+</script>
+{{!-- $("#savefood").on("submit", function (event) {
+  
+    event.preventDefault();
+    var newFood = {
+      name: $("#savefood [name=name]").val().trim()
+    };
+    // Send the POST request.
+    $.ajax("/api/food", {
+      type: "POST",
+      data: newFood
+    }).then(
+      function () {
+        console.log("created new plan");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  }); --}}

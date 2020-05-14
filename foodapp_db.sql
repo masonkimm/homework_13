@@ -8,8 +8,15 @@ CREATE TABLE food (
   PRIMARY KEY (id)
 );
 
-INSERT INTO food (name) VALUES ("Big Mac");
+CREATE TABLE finished_food(
+  id INT AUTO_INCREMENT NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  finished BOOLEAN,
+  PRIMARY KEY (id)
+);
 
+INSERT INTO food (name) VALUES ("Big Mac");
+INSERT INTO finished_food (name) VALUES ("Big Mac_done");
 
 
 
