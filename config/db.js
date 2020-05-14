@@ -13,6 +13,5 @@ module.exports ={
     password: "c9n9bu9zuoao1o7c",
     database: "hevifurbw0xzapx5",
   }
-
 }
 

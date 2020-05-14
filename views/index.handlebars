@@ -1,35 +1,40 @@
 <style>
+  body{
+    background-color: lightgoldenrodyellow;
+  }
   h1 {
     font-family: 'Courier New', Courier, monospace;
     color: lightseagreen;
     text-align: center;
   }
-
   h3 {
     font-family: 'Courier New', Courier, monospace;
     color: lightseagreen;
     text-align: center;
+    margin-right: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem
   }
-
   form {
     text-align: center;
   }
-
   #input {
-    background-color: lightblue;
+    background-color: rgb(67, 226, 218);
     border-radius: 25%;
-  }
+    text-align: center;
 
+  }
   #movebutton {
-    background-color: lightcoral;
+    background-color: rgb(67, 226, 218);
+    border-radius: 25%;
     margin-left: 2rem;
   }
-
   li {
+    margin-top: 1rem;
+    margin-left: 8rem;
     text-align: center;
     border-radius: 25%;
     list-style: square;
-
     margin-bottom: 10px;
     padding: 2px;
     width: 33%;
@@ -39,21 +44,26 @@
 <h1>Food App</h1>
 <div class="row">
 
-  <div class="col-6">
+  <div class="col-sm">
+    <h3>
+      Saved Foods
+    </h3>
     <ul>
       {{#each food}}
       <li>
         <p>
-          {{!-- {{this.id}}.  --}}
           {{this.name}}
-          <button id="movebutton" data-nameid="{{this.id}}" class="delname">Eat it!</button>
+          <button id="movebutton" data-nameid="{{this.id}}" class="delname">Eat</button>
         </p>
       </li>
       {{/each}}
     </ul>
   </div>
 
-  <div class="col-6" id="finishedfood" data-nameid="{{this.id}}" style="display:show">
+  <div class="col-sm" id="finishedfood" data-nameid="{{this.id}}" style="display:show">
+    <h3>
+      Finished Foods
+    </h3>
     <ul>
       {{#each finished}}
       <li>
@@ -64,17 +74,13 @@
       {{/each}}
     </ul>
   </div>
-
-
 </div>
-
 
 {{!-- <h4>Save a food!</h4> --}}
 <form action="/" method="POST" id="" class="button-size">
   <input id="input" type="input" name="name" placeholder="Enter food here">
-  <button type="submit">Save food!</button>
+  <button id="input" type="submit">Save</button>
 </form>
-
 
 <script type="text/javascript">
 
@@ -105,7 +111,10 @@
     );
   });
 
+  
+
 </script>
+
 {{!-- $("#savefood").on("submit", function (event) {
   
     event.preventDefault();
@@ -113,7 +122,7 @@
       name: $("#savefood [name=name]").val().trim()
     };
     // Send the POST request.
-    $.ajax("/api/food", {
+    $.ajax("/", {
       type: "POST",
       data: newFood
     }).then(
@@ -123,4 +132,4 @@
         location.reload();
       }
     );
-  }); --}}
+  });  --}}
