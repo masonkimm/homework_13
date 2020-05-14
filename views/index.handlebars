@@ -1,34 +1,39 @@
 <style>
-  h1{
-		font-family:'Courier New', Courier, monospace;
-		color: lightseagreen;
-		text-align: center;
-	}
-  h3{
-		font-family:'Courier New', Courier, monospace;
-		color: lightseagreen;
-		text-align: center;
-	}
-	form{
-		text-align: center;
-	}
+  h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: lightseagreen;
+    text-align: center;
+  }
+
+  h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: lightseagreen;
+    text-align: center;
+  }
+
+  form {
+    text-align: center;
+  }
+
   #input {
     background-color: lightblue;
     border-radius: 25%;
   }
-  #movebutton{
+
+  #movebutton {
     background-color: lightcoral;
     margin-left: 2rem;
   }
-   li {
+
+  li {
     text-align: center;
-		border-radius: 25%;
-		list-style: square;
-    
+    border-radius: 25%;
+    list-style: square;
+
     margin-bottom: 10px;
     padding: 2px;
     width: 33%;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
 </style>
 <h1>Food App</h1>
@@ -47,13 +52,13 @@
       {{/each}}
     </ul>
   </div>
-  
-   <div class="col-6"id="finishedfood" data-nameid="{{this.id}}"  style="display:show">
+
+  <div class="col-6" id="finishedfood" data-nameid="{{this.id}}" style="display:show">
     <ul>
       {{#each finished}}
       <li>
         <p>
-           {{this.name}}
+          {{this.name}}
         </p>
       </li>
       {{/each}}
@@ -82,7 +87,7 @@
       type: "DELETE"
     }).then(
       function () {
-        console.log("deleted id " +  id);
+        console.log("deleted id " + id);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -99,7 +104,7 @@
       }
     );
   });
-  
+
 </script>
 {{!-- $("#savefood").on("submit", function (event) {
   
