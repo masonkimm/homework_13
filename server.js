@@ -2,8 +2,11 @@ var exphbs = require("express-handlebars");
 var express = require("express");
 var mysql = require("mysql");
 var app = express();
+var config = require("./config/db")
 
 var PORT = process.env.PORT || 8080;
+
+const dbConfig = (process.env.NODE_ENV === "production") ? config.heroku : config.db
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -11,13 +14,38 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "rlatjdwls",
-  database: "foodapp_db",
-});
+var connection = mysql.createConnection(dbConfig)
+
+// var connection = mysql.createConnection(
+//   db= {
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "rlatjdwls",
+//   database: "foodapp_db",
+// },
+// heroku= {
+//   host: "pqxt96p7ysz6rn1f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//   port: 3306,
+//   user: "omvuolwr62ff8j5c",
+//   password: "c9n9bu9zuoao1o7c",
+//   database: "hevifurbw0xzapx5",
+// });
+  
+// db= {
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "rlatjdwls",
+//   database: "foodapp_db",
+// },
+// heroku= {
+//   host: "pqxt96p7ysz6rn1f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//   port: 3306,
+//   user: "omvuolwr62ff8j5c",
+//   password: "c9n9bu9zuoao1o7c",
+//   database: "hevifurbw0xzapx5",
+// }
 
 connection.connect(function (err) {
   if (err) {
