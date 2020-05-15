@@ -1,3 +1,10 @@
+-- FOR heroku USE: --
+
+--  DROP DATABASE IF EXISTS hevifurbw0xzapx5; --
+--  CREATE DATABASE hevifurbw0xzapx5; --
+--  USE hevifurbw0xzapx5; --
+
+
 DROP DATABASE IF EXISTS foodapp_db;
 CREATE DATABASE foodapp_db;
 USE foodapp_db;
