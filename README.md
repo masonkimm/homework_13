@@ -1,7 +1,7 @@
 # Homework_13
 
-## sungjinkimm
-[https://github.com/sungjinkimm](https://github.com/sungjinkimm)
+##Link
+[https://github.com/kbarcaa](https://github.com/kbarcaa)
 
 ## Project Description:
 
@@ -41,9 +41,9 @@ THE SOFTWARE IS PROVIDED "AS IS",  WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPL
 ## Badge: 
 
 
-![homework_13](https://img.shields.io/github/languages/top/sungjinkimm/homework_13)
+![homework_13](https://img.shields.io/github/languages/top/kbarcaa/homework_13)
 
 ## GitHub URL & Profile
-[GitHub URL](https://github.com/sungjinkimm)
+[GitHub URL](https://github.com/kbarcaa)
 
 
